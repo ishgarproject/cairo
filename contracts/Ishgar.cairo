@@ -19,7 +19,7 @@ from contracts.lib.Ownable_base import (
 struct NFTDeposit:
     member depositor: felt
     member erc721_address: felt
-    member token_id: Uint256
+    member token_id: felt
     member ask_price_in_wei: Uint256
 end
 
@@ -66,7 +66,7 @@ end
 ##############
 
 @event
-func nft_deposit_(account: felt, erc721_address: felt, token_id: Uint256):
+func nft_deposit_(account: felt, erc721_address: felt, token_id: felt):
 end
 
 @event
@@ -107,7 +107,7 @@ func deposit_nft{
         syscall_ptr: felt*,
         pedersen_ptr: HashBuiltin*,
         range_check_ptr
-    }(from_address: felt, account: felt, erc721_address: felt, token_id: Uint256):
+    }(from_address: felt, account: felt, erc721_address: felt, token_id: felt):
     assert_not_zero(account)
     assert_not_zero(erc721_address)
 
